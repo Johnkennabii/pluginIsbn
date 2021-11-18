@@ -27,7 +27,7 @@ const createIsbn = (data) => {
     dataIsbn.pageCount = data.items[0].volumeInfo.pageCount;
     dataIsbn.printType = data.items[0].volumeInfo.printType;
     dataIsbn.categorie = data.items[0].volumeInfo.categories[0];
-    // // //  prix non trouvé dans l'objet
+    //prix non trouvé dans l'objet
     dataIsbn.smallThumbnail = data.items[0].volumeInfo.imageLinks.smallThumbnail;
     dataIsbn.thumbnail = data.items[0].volumeInfo.imageLinks.thumbnail;
     dataIsbn.textSnippet = data.items[0].searchInfo.textSnippet;
@@ -40,6 +40,7 @@ const parseData = (e) => {
 
 
 
+
 // récuperation element Table
 const table = document.getElementById('table'); // element table
 let tableTest = []
@@ -49,21 +50,26 @@ const searchIsbn = (isbn) => {
     xhr.open('GET', `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`)
 
     xhr.addEventListener('readystatechange', () => {
-        if (xhr.readyState === 4) {
+        if (xhr.readyState === 4 ) {
             if (xhr.status === 200) {
-                let dataResponse = JSON.parse(xhr.response)
-                if (dataResponse.totalItems !== 1) {
-                    console.log('Livre inexistant dans notre banque de donnée')
+                if(isbn.length > 0){
+                    let dataResponse = JSON.parse(xhr.response)
+                    if (dataResponse.totalItems !== 1) {
+                        console.log('Livre inexistant dans notre banque de donnée')
+                    } else {
+                        alert('Livre ajouté')
+                        dataResponse = createIsbn(dataResponse)
+                            console.log('createIsbn' +dataResponse+ '\n')
+                        dataResponse = parseData(dataResponse)
+                            // console.log('parseData' +dataResponse+ '\n')
+                        tableTest = (Object.values(dataResponse))
+                            //console.log('Table test ' +tableTest[8]+ '\n')
+                        dataResponse = createLine(table, tableTest)
+                            // console.log(dataResponse)
+                    }
+
                 } else {
-                    dataResponse = createIsbn(dataResponse)
-                        // console.log('createIsbn' +dataResponse+ '\n')
-                    dataResponse = parseData(dataResponse)
-                        // console.log('parseData' +dataResponse+ '\n')
-                    tableTest = (Object.values(dataResponse))
-                        // console.log('Table test ' +tableTest+ '\n')
-                    dataResponse = createLine(table, tableTest)
-                        // console.log(dataResponse)
-                    alert('Livre ajouté')
+                    alert('Veuillez saisir un Isbn')
                 }
             }
         }
