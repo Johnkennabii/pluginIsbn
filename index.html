@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>ISBN Scan</title>
+</head>
+
+<body class="p-5">
+    <form class="row g-3" method="POST" action="#">
+        <div class="col-6">
+            <label for="inputIsbn" class="form-label">ISBN :</label>
+            <input type="text" class="form-control" id="isbn" placeholder="Scannez ISBN ..">
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-success">Vérifier</button>
+        </div>
+    </form>
+
+
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="addbook" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">Ajouter le livre aux produits</label>
+    </div>
+
+    <form method="POST" action="#">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="addbook" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+            Ajouter Livre aux Produits
+          </label>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-success">Ajouter</button>
+        </div>
+    </form>
+</body>
+
+</html>

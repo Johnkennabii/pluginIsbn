@@ -12,7 +12,8 @@
     <body>
         <br>
         <form method="POST" action="#">
-            <input class="input" type="text" name="isbn" placeholder="ISBN"> <input  class="btn btn-primary "type="submit" name="" > v3
+            <input class="input" type="text" name="isbn" placeholder="ISBN"> 
+            <input  class="btn btn-primary "type="submit" name="" > v3
         </form>
  
 
@@ -75,13 +76,7 @@ echo '
   </label>
 </div>
 <input class="btn btn-primary" type="submit" name="" value ="Valider">
-</form>
-
-
-';
-
-
-
+</form>';
   }
 }
 
@@ -107,7 +102,7 @@ function my_create_woo_product( $data = null ) {
         $product->set_regular_price( '20.55' ); // Be sure to use the correct decimal price.
         $product->set_category_ids( array( 16, 17 ) ); // Set multiple category ID's.
         $product->save(); // Save/update the WooCommerce order object.
-        echo 'produduit ajoute';
+        echo 'produit ajoute';
     }
 }
 
